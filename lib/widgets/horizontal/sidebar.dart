@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediaquery_app/screens/second_screen.dart';
 import 'package:mediaquery_app/widgets/button.dart';
 
 class SideBar extends StatelessWidget {
@@ -15,15 +16,35 @@ class SideBar extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
+          children: [
+            const Text(
               "SideBar",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            Button(text: "Mi Perfil", icon: Icons.person_rounded),
-            Button(text: "Ir de Compras", icon: Icons.shopping_bag),
-            Button(text: "Ver mi carrito", icon: Icons.shopping_cart),
-            Button(text: "Cerrar Sesion", icon: Icons.logout),
+            const Button(text: "Mi Perfil", icon: Icons.person_rounded),
+            // Button(
+            //   text: "Ir de Compras",
+            //   icon: Icons.shopping_bag,
+            //   route: const SecondScreen(),
+            // ),
+            Column(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SecondScreen(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.shopping_bag),
+                ),
+                const Text("Ir de Compras")
+              ],
+            ),
+            const Button(text: "Ver mi carrito", icon: Icons.shopping_cart),
+            const Button(text: "Cerrar Sesion", icon: Icons.logout),
           ],
         ),
       ),
